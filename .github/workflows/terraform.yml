@@ -1,0 +1,41 @@
+name: terraform-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: envs/dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.5"
+
+      - name: Format check
+        run: terraform fmt -check -recursive ../..
+
+      - name: Init (no backend — no GCP creds needed for validate)
+        run: terraform init -backend=false
+
+      - name: Validate
+        run: terraform validate
+
+  tfsec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: tfsec (IaC security scan)
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          soft_fail: true # report findings without failing the build (tighten later)
+
+  # W4 stretch: add a `plan` job that authenticates to GCP via Workload Identity
+  # Federation and runs `terraform plan` against the real backend. Deferred
+  # until the backend is in use.

@@ -1,0 +1,24 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# tfvars may hold project ids / secrets — ignore, but keep the example
+*.tfvars
+!*.tfvars.example
+
+# Keep the dependency lock file (best practice: commit it)
+!.terraform.lock.hcl
+
+# GCP credentials — NEVER commit
+*-key.json
+*-credentials.json
+gcp-key*.json
