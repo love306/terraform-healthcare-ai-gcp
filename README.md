@@ -2,7 +2,7 @@
 
 Infrastructure-as-Code that reproduces a **healthcare-AI inference platform** on
 Google Cloud using Terraform. Modeled on a real production stack (on-prem
-Kubernetes + PostgreSQL HA + GPU inference, operated at 99.8% uptime) and rebuilt
+Kubernetes + PostgreSQL HA + GPU inference) and rebuilt
 cloud-native to practice Terraform, GCP (GKE / Cloud SQL), and CI/CD.
 
 > **Note:** the application tier is a placeholder API — this repo contains no
