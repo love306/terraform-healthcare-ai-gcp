@@ -33,7 +33,7 @@ flowchart TB
 | PostgreSQL HA (pgpool/repmgr/Keepalived) | **Cloud SQL for PostgreSQL** (regional HA) |
 | Docker Compose app   | Containerized API on GKE (placeholder) |
 | VLAN / FortiGate     | **VPC** (custom subnet, secondary ranges, Cloud NAT) |
-| server_health + SLO/SLI | **Prometheus / Grafana** + SLO dashboard |
+| server_health (health-check scripts) | **Prometheus / Grafana** + SLO dashboard (W4, planned) |
 | GPU inference (T4)   | GKE GPU node pool (optional) |
 
 ## Roadmap
